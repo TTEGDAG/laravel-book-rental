@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\ServiceProvider;
 
 class HomeController extends Controller
 {
@@ -27,10 +28,15 @@ class HomeController extends Controller
     {
         //return Category::find(1)->books;
         
-        $books = Book::with('category')->get();
-        //$books = Book::whereBelongsTo( 1, 'categories_id')->get();
-        //$books = Book::where('categories_id', 1)->get();
-        //dd($books);
-        return view('home', compact('books'));
+        $books = Book::with('category')->orderBy('created_at', 'desc')->paginate(10);
+        $categories = Category::withCount('books')->orderBy('name', 'asc')->get();
+                    
+        return view('home', compact('books', 'categories'));
+    }
+
+    public function category($id)
+    {
+        //$books = Boo
+        return 'category '.$id;
     }
 }

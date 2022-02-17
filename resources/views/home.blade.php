@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-3 col-md-3 col-sm-4">
-            menu
+            @include('books.frontend.menu')
         </div>
         <div class="col-lg-9 col-md-9 col-sm-4">
             @if(count($books) >0)

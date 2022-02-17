@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,11 @@ use App\Http\Controllers\HomeController;
 // });
 
 
-Route::get('/', 'App\Http\Controllers\HomeController@index'); //<-- sprawdzić jak się robiło skrót 
+Route::get('/home', [SiteController::class, 'home'])->name('home');
 
+Route::get('/category/{id}', [HomeController::class, 'category'])->name('category');
 
+Route::get('/', [HomeController::class, 'index']); 
 
 Auth::routes();
+
