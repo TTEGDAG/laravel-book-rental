@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //return Category::find(1)->books;
+        
+        $books = Book::with('category')->get();
+        //$books = Book::whereBelongsTo( 1, 'categories_id')->get();
+        //$books = Book::where('categories_id', 1)->get();
+        //dd($books);
+        return view('home', compact('books'));
     }
 }
