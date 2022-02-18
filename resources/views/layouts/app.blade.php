@@ -101,7 +101,7 @@
                                     </li>
 
                                     <li class="hidden-xs">
-                                        <form method="get" action="#" role="search" class="navbar-left app-search pull-left">
+                                        <form method="get" action="{{ route('search') }}" role="search" class="navbar-left app-search pull-left">
                                             <input type="text" name="name" placeholder="Szukaj..." class="form-control">
                                             <button type="submit" style="display: inherit;border: none;background: transparent;margin-top: -30px;margin-left: 150px;color: #fff;"><i class="fa fa-search"></i></button>
                                             @csrf

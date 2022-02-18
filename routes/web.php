@@ -19,6 +19,9 @@ use App\Http\Controllers\SiteController;
 //     return view('welcome');
 // });
 
+Route::get('/', [HomeController::class, 'index']); 
+
+Auth::routes();
 
 Route::get('/home', [SiteController::class, 'home'])->name('home');
 
@@ -26,7 +29,6 @@ Route::get('/category/{id}', [HomeController::class, 'category'])->name('categor
 
 Route::get('/show/{id}', [HomeController::class, 'show'])->name('show');
 
-Route::get('/', [HomeController::class, 'index']); 
+Route::get('/search', [HomeController::class, 'name'])->name('search');
 
-Auth::routes();
 

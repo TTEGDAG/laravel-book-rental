@@ -37,6 +37,8 @@
                 </div>
             @endif
 
+            {{ $books->links() }}
+            
         </div>
     </div>
 </div>

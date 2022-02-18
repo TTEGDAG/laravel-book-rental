@@ -51,4 +51,13 @@ class HomeController extends Controller
         return view('books.frontend.show', compact('book', 'categories'));
         //return view('books\fronted\show');
     }
+
+    public function name(Request $request)
+    {
+        $input = $request->name;
+        $books = Book::where('title', 'like', '%'.$input.'%')->paginate(5);
+        $categories = Category::withCount('books')->get();
+         
+        return view('books.frontend.search', compact('books', 'categories'));
+    }
 }
