@@ -24,6 +24,8 @@ Route::get('/home', [SiteController::class, 'home'])->name('home');
 
 Route::get('/category/{id}', [HomeController::class, 'category'])->name('category');
 
+Route::get('/show/{id}', [HomeController::class, 'show'])->name('show');
+
 Route::get('/', [HomeController::class, 'index']); 
 
 Auth::routes();

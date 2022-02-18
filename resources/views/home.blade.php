@@ -23,7 +23,7 @@
                                     </div>
                                     <div>&nbsp;</div>
                                     <div class="card-footer">
-                                        <a href="#" class="btn btn-primary btn-rounded btn-block">Szczegóły</a>
+                                        <a href="{{route('show', ['id' => $book->id])}}" class="btn btn-primary btn-rounded btn-block">Szczegóły</a>
                                     </div>
                                 </div>
                             </div>

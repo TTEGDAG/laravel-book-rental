@@ -29,8 +29,7 @@ class HomeController extends Controller
         //return Category::find(1)->books;
         
         $books = Book::with('category')->orderBy('created_at', 'desc')->paginate(10);
-        $categories = Category::withCount('books')->orderBy('name', 'asc')->get();
-                    
+        $categories = Category::withCount('books')->orderBy('name', 'asc')->get();          
         return view('home', compact('books', 'categories'));
     }
 
@@ -38,5 +37,15 @@ class HomeController extends Controller
     {
         //$books = Boo
         return 'category '.$id;
+    }
+
+    public function show($id)
+    {
+        $book = Book::findOrFail($id);
+        //dd($book->desctiption);
+        $categories = Category::withCount('books')->orderBy('name', 'asc')->get();          
+
+        return view('books.frontend.show', compact('book', 'categories'));
+        //return view('books\fronted\show');
     }
 }
