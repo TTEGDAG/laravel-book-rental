@@ -35,8 +35,11 @@ class HomeController extends Controller
 
     public function category($id)
     {
-        //$books = Boo
-        return 'category '.$id;
+        $books = Book::with('category')->where('category_id', $id)->paginate(10);
+        $similarbook = Book::with('category')->inRandomOrder()->paginate(5);
+        $categories = Category::withCount('books')->get();
+
+        return view('books.frontend.category', compact('books', 'similarbook', 'categories'));
     }
 
     public function show($id)
