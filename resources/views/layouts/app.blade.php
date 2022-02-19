@@ -73,7 +73,7 @@
                                             
                                                 @if(Auth::user()->role_id == 1)
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="{{ route('book.all') }}">
                                                         <span><i class="ti-settings"></i></span><span> Admin </span> 
                                                     </a>
                                                 </li>
