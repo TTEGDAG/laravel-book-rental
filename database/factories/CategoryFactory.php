@@ -4,10 +4,11 @@ namespace Database\Factories;
 
 use App\Models\Book;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 class CategoryFactory extends Factory
 {
-
+   
     /**
      * Define the model's default state.
      *
@@ -15,9 +16,11 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
-
+        
+        //$array = ['Dla dzieci', 'Literatura obyczajowa', 'Historia', 'Kryminały, sensacje, thriller', 'Biznes, ekonomia, marketing', 'Nauka języków', 'Biografie'];
         return [
             'name' => $this->faker->word()
+            //'name' => Arr::random($array)
         ];
     }
 }
