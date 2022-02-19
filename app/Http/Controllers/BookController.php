@@ -121,7 +121,17 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = DB::select('select * from users where id = ?', [Auth::user()->id]);
+        
+        $book = Book::findOrFail($id);
+        $category = Category::all();
+
+        foreach($user as $row){
+            if( $row->role_id == 1 )
+                return view('books.backend.edit', compact('book', 'category'));
+            else
+                return redirect()->route('home');    
+        }
     }
 
     /**
@@ -133,7 +143,57 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $book = Book::find($id);
+
+        $input = $request->all();
+
+        if($request->hasFile('photo'))
+        {
+            $file = $request->file('photo');
+            $photoname = time() .'.'.$file->getClientOriginalExtension();
+
+            Image::make($file)->fit(480, 640)->save('photo/' .$photoname, 100);
+
+        } else{
+            $photoname = $book->photo;
+        }
+
+        if($request->hasFile('file'))
+        {
+            $file = $request->file('file');
+            $filename = uniqid(). '.' .$file->getClientOriginalExtension();
+            $file->move('pdf', $filename);
+
+        } else{
+            $filename = $book->file;
+        }
+
+        if( $request->category_id == NULL)
+        {
+            $category = $book->category_id;
+        } else{
+            $category = $request->category_id;
+        }
+
+        $book->title        =   $request->title;
+        $book->desctiption  =   $request->description;
+        $book->author       =   $request->author;
+        $book->category_id  =   $category;
+        $book->pages        =   $request->pages;
+        $book->date         =   $request->date;
+        $book->photo        =   $photoname;
+        $book->file         =   $filename;
+
+        $book->save();
+
+        return redirect('/books/all')
+            ->with([
+                'status'    =>  [
+                    'type'  => 'success',
+                    'content'   =>  'Poprawnie zaktualizowano dane'
+                ]
+            ]);
+
     }
 
     /**

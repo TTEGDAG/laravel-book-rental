@@ -35,7 +35,7 @@
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->pages }}</td>
                             <td>{{ $book->date }}</td>
-                            <td><a href="#"><i class="ti-pencil"></i></a></td>
+                            <td><a href="{{route('book.edit', ['id' => $book->id])}}"><i class="ti-pencil"></i></a></td>
                         </tr>
                     @endforeach
                 </tbody>

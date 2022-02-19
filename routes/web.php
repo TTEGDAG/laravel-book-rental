@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
@@ -27,7 +28,9 @@ Auth::routes();
 Route::get('/books/all', [BookController::class, 'index'])->name('book.all');
 Route::get('/books/show/{id}', [BookController::class, 'show'])->name('book.show');
 Route::get('/books/create', [BookController::class, 'create'])->name('book.create');
+Route::get('/books/edit{id}', [BookController::class, 'edit'])->name('book.edit');
 Route::post('/books/store', [BookController::class, 'store'])->name('book.store');
+Route::post('/books/update{id}', [BookController::class, 'update'])->name('book.update');
 
 Route::get('/home', [SiteController::class, 'home'])->name('home');
 Route::get('/category/{id}', [HomeController::class, 'category'])->name('category');
