@@ -12,7 +12,7 @@ use Intervention\Image\Facades\Image;
 class BookController extends Controller
 {    
     /**
-     * __construct
+     * Create a new controller instance.
      *
      * @return void
      */

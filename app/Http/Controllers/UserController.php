@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -45,7 +47,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $book = User::find($id);
+        $user = User::with('role')->findOrFail($id);
+
+        return view('user.show', compact('user', 'book'));
+
     }
 
     /**
@@ -80,5 +86,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function book($id)
+    {
+        $book = Book::findOrFail($id);
+
+        return view('user.book', compact('book'));
     }
 }

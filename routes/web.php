@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,11 +34,17 @@ Route::post('/books/store', [BookController::class, 'store'])->name('book.store'
 Route::post('/books/update{id}', [BookController::class, 'update'])->name('book.update');
 
 Route::get('/account/user/books/{id}', [UserController::class, 'show'])->name('account.user.books');
+Route::get('/account/user/book/{id}', [UserController::class, 'book'])->name('account.user.book');
 
 
-Route::get('/home', [SiteController::class, 'home'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', function () {
+//     return redirect()->route('index');
+// });
 Route::get('/category/{id}', [HomeController::class, 'category'])->name('category');
 Route::get('/show/{id}', [HomeController::class, 'show'])->name('show');
 Route::get('/search', [HomeController::class, 'name'])->name('search');
+Route::post('/rent', [HomeController::class, 'rent'])->name('book.rent')->middleware('auth');
+
 
 

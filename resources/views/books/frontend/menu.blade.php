@@ -4,7 +4,7 @@
     </div>
     <div class="panel-body">
 
-        <p><a href="{{ route('home') }}">Wszystkie kategorie</a></p>
+        <p><a href="{{ url('/') }}">Wszystkie kategorie</a></p>
 
         <hr>
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
 class HomeController extends Controller
@@ -16,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -59,5 +61,62 @@ class HomeController extends Controller
         $categories = Category::withCount('books')->orderBy('name', 'asc')->get();
          
         return view('books.frontend.search', compact('books', 'categories'));
+    }
+
+    public function rent(Request $request)
+    {
+        $input =  $request->all();
+        //dd($input);
+
+        $books = DB::select('select * from book_user where user_id = ?', [Auth::user()->id]);
+
+        /**jeżeli nie ma książki w bazie danych to ją wypożycz */
+        if( $books == NULL )
+        {
+            $new = new Book();
+
+            DB::table('book_user')->insert([
+                'user_id'   =>  $request->user_id,
+                'book_id'   =>  $request->book_id,
+                'date_rent'  =>  $request->date_rent
+            ]);
+        } else{
+            /**jeżeli w bazie danych jest książka przypisana do danego użytkownika to info */
+            foreach( $books as $book)
+            {
+                echo $book->book_id;
+            }
+
+            if( ( $book->book_id == $request->book_id) == TRUE )
+            {
+                return redirect()->route('home')
+                ->with([
+                    'status'    =>  [
+                        'type'  =>  'danger',
+                        'content'=> 'Próbujesz wypożyczyć książkę którą już wypożyczyłeś'
+                    ]
+                ]);
+            }
+
+            $new = new Book();
+
+            $new->book_id = $request->book_id;
+            
+            DB::table('book_user')->insert([
+                'user_id'   =>  $request->user_id,
+                'book_id'   =>  $request->book_id,
+                'date_rent'  =>  $request->date_rent,
+                'created_at'    => DB::raw('CURRENT_TIMESTAMP'),
+                'updated_at'    => DB::raw('CURRENT_TIMESTAMP')
+            ]);
+        }
+
+        return redirect()->route('account.user.books', ['id' => Auth::user()->id ])
+        ->with([
+            'status'    =>  [
+                'type'  =>  'success',
+                'content'   =>  'Książka została wypożyczona do dnia '. date('d-m-yy', $request->date_rent)
+            ]
+        ]);
     }
 }

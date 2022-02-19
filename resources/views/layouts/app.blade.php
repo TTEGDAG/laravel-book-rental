@@ -115,7 +115,7 @@
                                         </li>
                                     @if (Route::has('register'))
                                         <li class="hidden-sm hidden-xs">
-                                            <a href=" route('register') ">
+                                            <a href="{{ route('register') }}">
                                                 <span><i class="ti-user"></i></span><span> {{ __('Register') }} </span> 
                                             </a>
                                         </li>
