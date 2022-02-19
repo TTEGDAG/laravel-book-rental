@@ -17,11 +17,10 @@ class CategoryFactory extends Factory
     public function definition()
     {
         
-        $array = ['Dla dzieci', 'Literatura obyczajowa', 'Historia', 'Kryminały, sensacje, thriller', 'Biznes, ekonomia, marketing', 'Nauka języków', 'Biografie'];
+        //$array = ['Dla dzieci', 'Literatura obyczajowa', 'Historia', 'Kryminały, sensacje, thriller', 'Biznes, ekonomia, marketing', 'Nauka języków', 'Biografie'];
         return [
-            //'name' => $this->faker->word()
-            'name' => Arr::random($array)
-            //'name' => $this->faker->randomElement(['aaa', 'bbb', 'ccc', 'ddd', 'eee', 'fff'])
+            'name' => $this->faker->word()
+            //'name' => Arr::random($array)
         ];
     }
 }
