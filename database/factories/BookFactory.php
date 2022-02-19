@@ -20,7 +20,7 @@ class BookFactory extends Factory
 
         $timestamp = mt_rand(1, time());
         $randomDate = date("d/m/Y", $timestamp);
-        $countCategory =  DB::table('category')->count();
+        $countCategory =  DB::table('categories')->count();
         //$date = Carbon::createFromTimeStamp($this->faker->dateTimeBetween('-1 years', '+1 month')->getTimestamp());
         //dd($date);
         $file = ['5e406bcf48c4d', '5e406ca097bd7', '5e406d1024981', '5e406da7957b6', '5e406e2bc8317', '5e406ea7ad78f'];

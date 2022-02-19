@@ -13,7 +13,7 @@
                         <div class="col-lg-2 col-md-4 col-sm-6">
                             <div class="card-deck">
                                 <div class="card">
-                                    <img src="/photo/{{$book->photo}}.jpg" class="card-img-top img-responsive" alt="{{ $book->title }}">
+                                    <img src="/photo/{{$book->photo}}" class="card-img-top img-responsive" alt="{{ $book->title }}">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $book->title }}</h5>
                                         <p class="card-text">{{ $book->autor }}</p>
