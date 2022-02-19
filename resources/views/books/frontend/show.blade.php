@@ -36,7 +36,7 @@
                         <div><p>Kategoria:&nbsp;{{$book->category->name}}</p></div>
                         <div><p>Data publikacji:&nbsp;{{$book->date}}</p></div>
                         <div><p>Ilość stron:&nbsp;{{$book->pages}}</p></div>
-                        <div>Opis:&nbsp;{{$book->desctiption}}</div>
+                        <div>Opis:&nbsp;{{$book->description}}</div>
                     </div>
                 </div>
             </div>

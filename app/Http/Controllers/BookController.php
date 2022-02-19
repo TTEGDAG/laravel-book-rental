@@ -81,7 +81,7 @@ class BookController extends Controller
         $book = new Book();
         $book->title = $request->title;
         $book->author = $request->author;
-        $book->desctiption = $request->description;
+        $book->description = $request->description;
         $book->title = $request->author;
         $book->category_id = $request->category_id;
         $book->pages = $request->pages;
@@ -176,7 +176,7 @@ class BookController extends Controller
         }
 
         $book->title        =   $request->title;
-        $book->desctiption  =   $request->description;
+        $book->description  =   $request->description;
         $book->author       =   $request->author;
         $book->category_id  =   $category;
         $book->pages        =   $request->pages;

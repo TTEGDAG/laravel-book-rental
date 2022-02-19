@@ -37,7 +37,7 @@ class HomeController extends Controller
     {
         $books = Book::with('category')->where('category_id', $id)->paginate(10);
         $similarbook = Book::with('category')->inRandomOrder()->paginate(5);
-        $categories = Category::withCount('books')->get();
+        $categories = Category::withCount('books')->orderBy('name', 'asc')->get();
 
         return view('books.frontend.category', compact('books', 'similarbook', 'categories'));
     }
@@ -45,7 +45,7 @@ class HomeController extends Controller
     public function show($id)
     {
         $book = Book::findOrFail($id);
-        //dd($book->desctiption);
+        //dd($book->description);
         $categories = Category::withCount('books')->orderBy('name', 'asc')->get();          
 
         return view('books.frontend.show', compact('book', 'categories'));
@@ -56,7 +56,7 @@ class HomeController extends Controller
     {
         $input = $request->name;
         $books = Book::where('title', 'like', '%'.$input.'%')->paginate(5);
-        $categories = Category::withCount('books')->get();
+        $categories = Category::withCount('books')->orderBy('name', 'asc')->get();
          
         return view('books.frontend.search', compact('books', 'categories'));
     }

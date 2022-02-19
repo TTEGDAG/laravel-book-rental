@@ -26,7 +26,7 @@
                                         </div>
                                         <div>&nbsp;</div>
                                         <div class="card-footer" style="margin-bottom: 2px;">
-                                            <a href="route('show', ['id' => $book->id])" class="btn btn-success btn-rounded btn-block">Szczegóły</a>
+                                            <a href="{{route('show', ['id' => $book->id])}}" class="btn btn-success btn-rounded btn-block">Szczegóły</a>
                                         </div>
                                     </div>
                                 </div>
@@ -55,7 +55,7 @@
                                         </div>
                                         <div>&nbsp;</div>
                                         <div class="card-footer" style="margin-bottom: 2px;">
-                                            <a href="route('show', ['id' => $similar->id])" class="btn btn-success btn-rounded btn-block">Szczegóły</a>
+                                            <a href="{{route('show', ['id' => $similar->id])}}" class="btn btn-success btn-rounded btn-block">Szczegóły</a>
                                         </div>
                                     </div>
                                 </div>

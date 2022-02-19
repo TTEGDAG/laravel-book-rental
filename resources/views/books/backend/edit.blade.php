@@ -34,7 +34,7 @@
                     <div class="col-md-12 col-sm-12" >
                         <div class="form-group">
                             <label>Dodaj opis</label>
-                            <textarea name="description" class="summernote" >{{$book->desctiption}}</textarea>
+                            <textarea name="description" class="summernote" >{{$book->description}}</textarea>
 
                             @error('description')
                                 <span class="invalid-feedback text-danger" role="alert">

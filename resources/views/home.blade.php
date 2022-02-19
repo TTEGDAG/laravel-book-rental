@@ -37,8 +37,11 @@
                 </div>
             @endif
 
-            {{ $books->links() }}
-            
+            @if($books->hasPages())
+                <div class="col-sm-12">
+                    {{$books->links()}}
+                </div>
+            @endif
         </div>
     </div>
 </div>
