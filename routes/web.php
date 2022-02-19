@@ -32,6 +32,9 @@ Route::get('/books/edit{id}', [BookController::class, 'edit'])->name('book.edit'
 Route::post('/books/store', [BookController::class, 'store'])->name('book.store');
 Route::post('/books/update{id}', [BookController::class, 'update'])->name('book.update');
 
+Route::get('/account/user/books/{id}', [UserController::class, 'show'])->name('account.user.books');
+
+
 Route::get('/home', [SiteController::class, 'home'])->name('home');
 Route::get('/category/{id}', [HomeController::class, 'category'])->name('category');
 Route::get('/show/{id}', [HomeController::class, 'show'])->name('show');

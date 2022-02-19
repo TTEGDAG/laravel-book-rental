@@ -55,7 +55,7 @@
                                                 <li class="has-submenu">
                                                     <a href="#"> <span><i class="ti-dashboard"></i></span><span> Moje konto </span> </a>
                                                     <ul class="submenu">
-                                                        <li><a href="#"> Moje książki</a></li>
+                                                        <li><a href="{{route('account.user.books', ['id' => Auth::user()->id])}}"> Moje książki</a></li>
                                                         <li><a href="#"> Profil</a></li>
                                                         <li class="divider"></li>
                                                         <li>
