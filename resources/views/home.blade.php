@@ -15,7 +15,7 @@
                                 <div class="card">
                                     <img src="/photo/{{ $book->photo }}" class="card-img-top img-responsive" alt="{{ $book->title }}">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $book->title }}</h5>
+                                        <h5 class="card-title">{{ substr($book->title, 0, 20) }}</h5>
                                         <p class="card-text">{{ $book->autor }}</p>
                                     </div>
                                     <div class="card-footer">

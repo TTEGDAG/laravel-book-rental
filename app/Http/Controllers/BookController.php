@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 class BookController extends Controller
 {    
@@ -65,6 +66,8 @@ class BookController extends Controller
             $file = $request->file('photo');
             $photoname = time() . '.' .$file->getClientOriginalExtension();
 
+            Image::make($file)->fit(480, 640)->save('photo/' .$photoname, 100);
+
         }
 
         if($request->hasFile('file'))
@@ -77,13 +80,14 @@ class BookController extends Controller
 
         $book = new Book();
         $book->title = $request->title;
-        $book->description = $request->description;
+        $book->author = $request->author;
+        $book->desctiption = $request->description;
         $book->title = $request->author;
         $book->category_id = $request->category_id;
-        $book->title = $request->pages;
+        $book->pages = $request->pages;
         $book->date = $request->date;
-        $book->photo = $request->photoname;
-        $book->file = $request->filename;
+        $book->photo = $photoname;
+        $book->file = $filename;
 
         $book->save();
 

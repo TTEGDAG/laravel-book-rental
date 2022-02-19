@@ -10,6 +10,10 @@ class Book extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title', 'desctiption', 'author', 'category_id', 'photo', 'file', 'pages', 'data'
+    ];
+
     public function category(){
         return $this->belongsTo(Category::class);
     }
