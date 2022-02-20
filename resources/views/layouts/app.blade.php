@@ -56,7 +56,7 @@
                                                     <a href="#"> <span><i class="ti-dashboard"></i></span><span> Moje konto </span> </a>
                                                     <ul class="submenu">
                                                         <li><a href="{{route('account.user.books', ['id' => Auth::user()->id])}}"> Moje książki</a></li>
-                                                        <li><a href="#"> Profil</a></li>
+                                                        <li><a href="{{route('account.user.edit', ['id' => Auth::user()->id])}}"> Profil</a></li>
                                                         <li class="divider"></li>
                                                         <li>
                                                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{route('logout')}}"

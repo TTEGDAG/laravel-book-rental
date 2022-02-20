@@ -7,7 +7,7 @@
         @endif
         <h4 class="m-b-5">{{ $user->name }}</h4>
         <p class="text-muted m-b-5"><i>{{ $user->role->name }}</i></p>
-        <p class="text-muted m-b-5"><a href="#">Edytuj dane</a></p>
+        <p class="text-muted m-b-5"><a href="{{route('account.user.edit', ['id' => $user->id])}}">Edytuj dane</a></p>
     </div>
     
     <div class="m-b-20">

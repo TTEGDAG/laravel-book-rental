@@ -3,6 +3,7 @@
 /public/storage
 /public/photo
 /public/pdf
+/public/images
 /storage/*.key
 /vendor
 .env
