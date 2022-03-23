@@ -29,6 +29,7 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::with('category')->paginate(5);
+        //dd($books);
         $user = DB::select('select * from users where id = ?', [Auth::user()->id]);
         return view('books.backend.index', compact('books', 'user'));
     }
@@ -41,7 +42,7 @@ class BookController extends Controller
     public function create()
     {
         $category = Category::all();
-
+        //dd($category);
         return view('books.backend.create', compact('category'));
     }
 
@@ -60,7 +61,6 @@ class BookController extends Controller
         ]);
 
         $input = $request->all();
-        //dd($input);
         if($request->hasFile('photo'))
         {
             $file = $request->file('photo');
